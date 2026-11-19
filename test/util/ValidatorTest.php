@@ -22,7 +22,8 @@ class ValidatorTest extends TestCase
     protected function tearDown(): void
     {
     }
-/* listing 21.07 */
+
+    /* listing 21.07 */
     public function testValidateCorrectPass(): void
     {
         $this->assertTrue(
@@ -30,21 +31,19 @@ class ValidatorTest extends TestCase
             "Expecting successful validation"
         );
     }
-/* /listing 21.07 */
+    /* /listing 21.07 */
 
     public function testValidateFalsePassFirst(): void
     {
         $store = $this->createMock(UserStore::class);
-	
 
         $user = $this->createMock(User::class);
         $user->expects($this->any())
             ->method("getMail")
-            ->will($this->returnValue("bob@example.com"));
+            ->willReturn("bob@example.com");
         $user->expects($this->any())
             ->method("getPass")
-            ->will($this->returnValue("right"));
-
+            ->willReturn("right");
 
         $this->validator = new Validator($store);
 
@@ -54,7 +53,7 @@ class ValidatorTest extends TestCase
 
         $store->expects($this->any())
             ->method("getUser")
-            ->will($this->returnValue($user));
+            ->willReturn($user);
 
         $this->validator->validateUser("bob@example.com", "wrong");
     }
@@ -65,10 +64,10 @@ class ValidatorTest extends TestCase
         $user = $this->createMock(User::class);
         $user->expects($this->any())
             ->method("getMail")
-            ->will($this->returnValue("bob@example.com"));
+            ->willReturn("bob@example.com");
         $user->expects($this->any())
             ->method("getPass")
-            ->will($this->returnValue("right"));
+            ->willReturn("right");
 
         $this->validator = new Validator($store);
 
@@ -78,7 +77,7 @@ class ValidatorTest extends TestCase
 
         $store->expects($this->any())
             ->method("getUser")
-            ->will($this->returnValue($user));
+            ->willReturn($user);
 
         $this->validator->validateUser("bob@example.com", "wrong");
     }
