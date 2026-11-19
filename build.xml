@@ -1,0 +1,20 @@
+<?xml version='1.0'?> 
+<project name='userthing' default='build' basedir='.'>
+    <property name='build' value='./build'/>
+    <property name='test' value='./test'/> 
+    <property name='src' value='./src'/> 
+    <property name='version' value='1.1.1'/> 
+
+    <target name='build'>
+        <mkdir dir="${build}"/>
+        <copy todir="${build}">
+            <fileset dir='${src}'/>
+        </copy>
+        <copy todir='${build}/test'>
+            <fileset dir='${test}'/>
+        </copy>
+    </target>
+    <target name='clean'>
+        <delete dir='${build}'/>
+    </target>
+</project>
