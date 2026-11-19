@@ -28,7 +28,7 @@
     <!-- listing 21.3 -->
     <target name="doc" depends="build">
         <mkdir dir="reports/docs" />
-        <exec executable="php" dir="${phing.dir}" passthru="true">
+        <exec executable="php" dir="${phing.dir}" passthru="true" checkreturn="true">
             <arg line="phpDocumentor.phar --directory=build/src --target=reports/docs --title=userthing" />
         </exec>
     </target>
